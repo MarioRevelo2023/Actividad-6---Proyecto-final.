@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista de Pacientes</title>
+</head>
+<body>
+	<h1>Lista de Pacientes</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Apellido</th>
+				<th>Email</th>
+				<th>Celular</th>
+				<th>Enfermedades</th>
+				<th>Duración de sesión</th>
+				<th>Fecha</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				include('config/config.php');
+				include('classes/paciente.php');
+				$paciente = new ingreso();
+				$result = $paciente->getAll();
+				while ($row = mysqli_fetch_array($result)) {
+					echo "<tr>";
+					echo "<td>".$row['nombres']."</td>";
+					echo "<td>".$row['apellidos']."</td>";
+					echo "<td>".$row['email']."</td>";
+					echo "<td>".$row['celular']."</td>";
+					echo "<td>".$row['enfermedades']."</td>";
+					echo "<td>".$row['duracionsecion']."</td>";
+					echo "<td>".$row['fecha']."</td>";
+					echo "</tr>";
+				}
+			?>
+		</tbody>
+	</table>
+</body>
+</html>
